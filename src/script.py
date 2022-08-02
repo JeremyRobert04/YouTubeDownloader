@@ -6,4 +6,4 @@
 ##
 
 def run_script():
-        print("Hello world inside run script")
+    print("Hello world inside run script")
