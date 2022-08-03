@@ -15,9 +15,8 @@ from PIL import Image, ImageTk
 from io import BytesIO
 import urllib.request
 import os
-from moviepy.editor import AudioFileClip
+from moviepy.audio.io.AudioFileClip import AudioFileClip
 
-URL = "https://youtu.be/AvBv2goo7Ng"
 WIDTH = 780
 HEIGHT = 520
 
