@@ -54,17 +54,16 @@ class Download():
             except:
                 print("An Error occured when downloading the video to mp3... try again later or contact the owner")
                 return
-            self.video_download_done()
         else:
             try:
                 if self.get_resolution().index(res) == 1:
                     self.yt.streams.get_highest_resolution().download(PATH_TO_DOWNLOAD)
                 else:
                     self.yt.streams.get_lowest_resolution().download(PATH_TO_DOWNLOAD)
-                self.video_download_done()
             except:
                 print("An Error occured... try again later or contact the owner")
                 return
+        self.video_download_done()
 
     def video_download_done(self):
         messagebox.showinfo("Successfully", "Video correctly downloaded and saved in " + PATH_TO_DOWNLOAD)
