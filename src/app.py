@@ -75,7 +75,7 @@ class App(customtkinter.CTk):
         super().__init__()
 
         self.title("Youtube Video Downloader")
-        self.iconbitmap("templates/Icon.ico")
+        self.iconbitmap("Icon.ico")
         self.geometry(f"{WIDTH}x{HEIGHT}")
         self.resizable(False, False)
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
