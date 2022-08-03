@@ -38,6 +38,13 @@ class Download():
     def get_thumbnail(self):
         return self.yt.thumbnail_url
 
+    def get_resolution(self):
+        resolutions = [int(i.split("p")[0]) for i in (list(dict.fromkeys([i.resolution for i in self.yt.streams if i.resolution])))]
+        resolutions.sort()
+        del resolutions[1:-1]
+        str_resolution = [str(x) for x in resolutions]
+        return str_resolution
+
     def download_video(self, res="mp3"):
         if res == "Download MP4":
             return
@@ -58,13 +65,6 @@ class Download():
             except:
                 print("An Error occured... try again later or contact the owner")
                 return
-
-    def get_resolution(self):
-        resolutions = [int(i.split("p")[0]) for i in (list(dict.fromkeys([i.resolution for i in self.yt.streams if i.resolution])))]
-        resolutions.sort()
-        del resolutions[1:-1]
-        str_resolution = [str(x) for x in resolutions]
-        return str_resolution
 
     def video_download_done(self):
         messagebox.showinfo("Successfully", "Video correctly downloaded and saved in " + PATH_TO_DOWNLOAD)
@@ -229,6 +229,7 @@ class App(customtkinter.CTk):
 
     def on_closing(self, event=0):
         self.destroy()
+
 
 if __name__ == '__main__':
     app = App()
