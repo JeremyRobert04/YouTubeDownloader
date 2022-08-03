@@ -12,10 +12,8 @@ from tkinter.filedialog import askdirectory
 from pathlib import Path
 from pytube import YouTube
 from PIL import Image, ImageTk
-from moviepy.editor import *
 from io import BytesIO
 import urllib.request
-import os
 
 URL = "https://youtu.be/AvBv2goo7Ng"
 WIDTH = 780
@@ -45,19 +43,9 @@ class Download():
             return
         if res == "mp3":
             try:
-                self.yt.streams.get_audio_only().download(PATH_TO_DOWNLOAD, self.get_title() + "_to_mp3.mp4")
+                self.yt.streams.get_audio_only().download(PATH_TO_DOWNLOAD, self.get_title() + ".mp3")
             except:
                 print("An Error occured when downloading the video to mp3... try again later or contact the owner")
-                return
-            try:
-                mp4 = PATH_TO_DOWNLOAD + "\\" + self.get_title() + "_to_mp3.mp4"
-                mp3 = PATH_TO_DOWNLOAD + "\\" + self.get_title() + ".mp3"
-                videofile = AudioFileClip(mp4)
-                videofile.write_audiofile(mp3)
-                videofile.close()
-                os.remove(mp4)
-            except:
-                print("An Error occured when converting file to mp3... try again later or contact the owner")
                 return
             self.video_download_done()
         else:
